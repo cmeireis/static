@@ -3,6 +3,11 @@ pipeline {
   stages {
     stage('Build') {
       parallel {
+        stage('Lint HTML') {
+          steps {
+            sh 'tidy -q -e *.html'
+          }
+        }
         stage('Build') {
           steps {
             withAWS(credentials: 'aws-static') {
@@ -12,11 +17,6 @@ pipeline {
           }
         }
 
-        stage('Lint HTML') {
-          steps {
-            sh 'tidy -q -e *.html'
-          }
-        }
 
       }
     }
