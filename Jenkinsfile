@@ -3,8 +3,10 @@ pipeline {
   stages {
     stage('Lint HTML') {
       steps {
-        sh '''sh \'echo "Hello World with AWS Creds"\'
-sh \'tidy -q -e *.html\''''
+        sh ''' \'\'\'
+  echo "Hello World with AWS Creds"
+  tidy -q -e *.html
+\'\'\''''
       }
     }
 
